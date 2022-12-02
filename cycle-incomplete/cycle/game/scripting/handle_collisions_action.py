@@ -43,11 +43,11 @@ class HandleCollisionsAction(Action):
         head = cycle.get_head()
         #check if head from snake 1 and segment from snake 2, location, comare
 
-        # if head.get_position().equals(food.get_position()):
-        #     points = food.get_points()
-        #     cycle.grow_tail(points)
-        #     score.add_points(points)
-        #     food.reset()
+        if head.get_position().equals(food.get_position()):
+            points = food.get_points()
+            cycle.grow_tail(points)
+            score.add_points(points)
+            food.reset()
             # pass
     
     def _handle_segment_collision(self, cast):
@@ -86,4 +86,4 @@ class HandleCollisionsAction(Action):
 
             for segment in segments:
                 segment.set_color(constants.WHITE)
-            # food.set_color(constants.WHITE)
+            food.set_color(constants.WHITE)

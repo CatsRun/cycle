@@ -1,5 +1,5 @@
 from game.casting.actor import Actor
-
+from game.casting.cycle import Cycle
 
 class Score(Actor):
     """
@@ -16,12 +16,17 @@ class Score(Actor):
         super().__init__()
         self._points = 0
         self.add_points(0)
+        # cycle = cycle.get_player('cycle')
 
     def add_points(self, points):
+    # def add_points(self, points, cycle):
         """Adds the given points to the score's total points.
         
         Args:
             points (int): The points to add.
-        """
+        """        
         self._points += points
         self.set_text(f"Score: {self._points}")
+        # self.set_text(f"Player {cycle} {self._points}") #this is trying to change the score based on which player it is
+
+        #call score twice and change 'Score: ' to 'Player 1 ' and 'Player 2 '

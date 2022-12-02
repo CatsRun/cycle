@@ -47,7 +47,8 @@ class Cycle(Actor):
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text("#")
-            segment.set_color(constants.GREEN)
+            # segment.set_color(constants.GREEN) #this color needs to change depentand upon each player
+            segment.set_color(self._cycle_color)
             self._segments.append(segment)
 
     def turn_head(self, velocity):
@@ -61,7 +62,7 @@ class Cycle(Actor):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "8" if i == 0 else "#"
-            color = constants.YELLOW if i == 0 else constants.GREEN
+            color = constants.YELLOW if i == 0 else self._cycle_color #this sets the color of the body to the color in main that is passed here
             
             segment = Actor()
             segment.set_position(position)
@@ -69,3 +70,16 @@ class Cycle(Actor):
             segment.set_text(text)
             segment.set_color(color)
             self._segments.append(segment)
+
+#This sets if it is the first player, red, or the second player, green. 
+#should this be in a different class?
+    def set_player(self, color):
+        if color == 'RED':
+            player = 1
+        else: 
+            player = 2
+
+        return player
+
+    def get_player(self):
+        return self.set_player

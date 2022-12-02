@@ -32,8 +32,14 @@ class DrawActorsAction(Action):
         segments = cycle.get_segments()
         messages = cast.get_actors("messages")
 
+        score = cast.get_second_actor("scores")
+        food = cast.get_second_actor("foods")
+        cycle = cast.get_second_actor("cycles")
+        segments = cycle.get_segments()
+        messages = cast.get_actors("messages")
+
         self._video_service.clear_buffer()
-        # self._video_service.draw_actor(food) #start this again. look at main to see what to uncomment
+        self._video_service.draw_actor(food) #start this again. look at main to see what to uncomment
         self._video_service.draw_actors(segments)
         self._video_service.draw_actor(score)
         self._video_service.draw_actors(messages, True)

@@ -20,11 +20,12 @@ def main():
     
     # create the cast
     cast = Cast()
-    # cast.add_actor("foods", Food())
+    cast.add_actor("foods", Food())
     cast.add_actor('cycles', Cycle(constants.RED)) #this replaces 'snake'
-    cast.add_actor('cycles', Cycle(constants.GREEN))
+    cast.add_actor('cycles', Cycle(constants.GREEN)) #how do I add a second snake?
     # cast.add_actor("snakes", Snake())
     cast.add_actor("scores", Score())
+    # cast.add_actor("scores", Score()) this will be the score for snake2
    
     # start the game
     keyboard_service = KeyboardService()

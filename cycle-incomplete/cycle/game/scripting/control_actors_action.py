@@ -22,6 +22,8 @@ class ControlActorsAction(Action):
         self._keyboard_service = keyboard_service
         self._direction = Point(constants.CELL_SIZE, 0)
 
+
+
     def execute(self, cast, script):
         """Executes the control actors action.
 
@@ -29,6 +31,8 @@ class ControlActorsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
+        # if constants.RED:  #sets 1st, or RED snake to wsad keys
+        # if self.cycle == 1:
         # left
         if self._keyboard_service.is_key_down('a'):
             self._direction = Point(-constants.CELL_SIZE, 0)
@@ -49,22 +53,23 @@ class ControlActorsAction(Action):
         cycle.turn_head(self._direction)
 
 
-
-        # # left
-        # if self._keyboard_service.is_key_down('j'):
-        #     self._direction = Point(-constants.CELL_SIZE, 0)
+        # else: #sets other snake to jlik keys  #how do I set this to the 2nd snake?
+        # if cycle.get_player == 2:
+    # left
+        if self._keyboard_service.is_key_down('j'):
+            self._direction = Point(-constants.CELL_SIZE, 0)
         
-        # # right
-        # if self._keyboard_service.is_key_down('l'):
-        #     self._direction = Point(constants.CELL_SIZE, 0)
+        # right
+        if self._keyboard_service.is_key_down('l'):
+            self._direction = Point(constants.CELL_SIZE, 0)
         
-        # # up
-        # if self._keyboard_service.is_key_down('i'):
-        #     self._direction = Point(0, -constants.CELL_SIZE)
+        # up
+        if self._keyboard_service.is_key_down('i'):
+            self._direction = Point(0, -constants.CELL_SIZE)
         
-        # # down
-        # if self._keyboard_service.is_key_down('k'):
-        #     self._direction = Point(0, constants.CELL_SIZE)
-        
-        # cycle = cast.get_second_actor("cycles")
-        # cycle.turn_head(self._direction)
+        # down
+        if self._keyboard_service.is_key_down('k'):
+            self._direction = Point(0, constants.CELL_SIZE)
+            
+        cycle = cast.get_second_actor("cycles") #tried this as 2nd actor. Needed to add get_2nd_ to cycle class. How can I add a 2nd snake and asign it these comands?
+        cycle.turn_head(self._direction)
