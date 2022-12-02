@@ -16,10 +16,9 @@ class Score(Actor):
         super().__init__()
         self._points = 0
         self.add_points(0)
-        # cycle = cycle.get_player('cycle')
+
 
     def add_points(self, points):
-    # def add_points(self, points, cycle):
         """Adds the given points to the score's total points.
         
         Args:
