@@ -12,7 +12,7 @@ class Cast:
         """Constructs a new Actor."""
         self._actors = {}
         
-    def add_actor(self, group, actor):
+    def add_actor(self, group, actor): #what does this mean?**********
         """Adds an actor to the given group.
         
         Args:
@@ -51,6 +51,20 @@ class Cast:
         return results
 
     def get_first_actor(self, group):
+        """Gets the first actor in the given group.
+        
+        Args:
+            group (string): The name of the group.
+            
+        Returns:
+            List: The first actor in the group.
+        """
+        result = None
+        if group in self._actors.keys():
+            result = self._actors[group][0]
+        return result
+
+    def get_second_actor(self, group): #should this not be duplicated and instead be calling get_first_actor twice?
         """Gets the first actor in the given group.
         
         Args:
