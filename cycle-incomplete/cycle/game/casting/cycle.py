@@ -1,6 +1,7 @@
 import constants
 from game.casting.actor import Actor
 from game.shared.point import Point
+from game.scripting.control_actors_action import ControlActorsAction
 
 
 class Cycle(Actor):
@@ -18,6 +19,9 @@ class Cycle(Actor):
         self._cycle_color = color
         self._segments = []
         self._prepare_body()
+        # self.cycle1 = cycle1
+        # player1 = self
+        # player2 = self
 
     def get_segments(self):
         return self._segments
@@ -54,9 +58,15 @@ class Cycle(Actor):
     def turn_head(self, velocity):
         self._segments[0].set_velocity(velocity)
     
+    # def _prepare_body(self, change_start_point):
     def _prepare_body(self):
-        x = int(constants.MAX_X / 2)
+        # a = change_start_point
+        x = int(constants.MAX_X / 2) #start location of snake
         y = int(constants.MAX_Y / 2)
+        # x = int(constants.MAX_X / 2 + a)
+        # # x = self.position 
+        # y = int(constants.MAX_Y / 2 + a)
+
 
         for i in range(constants.CYCLE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
@@ -71,15 +81,3 @@ class Cycle(Actor):
             segment.set_color(color)
             self._segments.append(segment)
 
-#This sets if it is the first player, red, or the second player, green. 
-#should this be in a different class?
-    def set_player(self, color):
-        if color == 'RED':
-            player = 1
-        else: 
-            player = 2
-
-        return player
-
-    def get_player(self):
-        return self.set_player

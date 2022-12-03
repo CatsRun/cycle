@@ -21,12 +21,14 @@ def main():
     # create the cast
     cast = Cast()
     cast.add_actor("foods", Food())
+    cast.add_actor("foods2", Food())
     cast.add_actor('cycles', Cycle(constants.RED)) #this replaces 'snake'
-    cast.add_actor('cycles', Cycle(constants.GREEN)) #how do I add a second snake?
-    # cast.add_actor("snakes", Snake())
-    cast.add_actor("scores", Score())
-    # cast.add_actor("scores", Score()) this will be the score for snake2
-   
+    cast.add_actor('cycles', Cycle(constants.GREEN)) #this is how snake 1 and 2 are differentiated. 
+    # cast.add_actor("scores1", Score())
+    # cast.add_actor("scores2", Score()) #change start point 
+    
+
+
     # start the game
     keyboard_service = KeyboardService()
     video_service = VideoService()
@@ -39,6 +41,7 @@ def main():
     
     director = Director(video_service)
     director.start_game(cast, script)
+    # director.start_game(cast2, script) #having 2 of these makes the game one and then the other
 
 
 if __name__ == "__main__":

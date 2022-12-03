@@ -37,18 +37,25 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        score = cast.get_first_actor("scores")
-        food = cast.get_first_actor("foods")
+        #somehow make a differnce in scores to dierentiate between scores1 and scores2 without duplicating work. 
+        score = cast.get_first_actor("scores1")
+        # food = cast.get_first_actor("foods") #why does this
         cycle = cast.get_first_actor("cycles")
         head = cycle.get_head()
         #check if head from snake 1 and segment from snake 2, location, comare
+        #
+        #cycle 2
+        score2 = cast.get_first_actor("scores2")
+        food = cast.get_first_actor("foods2")
+        # cycle2 = cast.get_first_actor("cycles2")
+        # head2 = cycle2.get_head()
 
         if head.get_position().equals(food.get_position()):
             points = food.get_points()
             cycle.grow_tail(points)
             score.add_points(points)
             food.reset()
-            # pass
+
     
     def _handle_segment_collision(self, cast):
         """Sets the game over flag if the snake collides with one of its segments.
@@ -73,7 +80,10 @@ class HandleCollisionsAction(Action):
         if self._is_game_over:
             cycle = cast.get_first_actor("cycles")
             segments = cycle.get_segments()
-            food = cast.get_first_actor("foods")
+            food = cast.get_first_actor("foods1")
+
+            #cycle 2
+            food = cast.get_first_actor("foods2")
 
             x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
@@ -87,3 +97,6 @@ class HandleCollisionsAction(Action):
             for segment in segments:
                 segment.set_color(constants.WHITE)
             food.set_color(constants.WHITE)
+
+            #set both snakes going up upon end of game. This will set them to not cross while dead.
+            #if else, if collistion on vertiacal dead, make horizontal. 

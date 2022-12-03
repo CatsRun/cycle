@@ -26,6 +26,5 @@ class Score(Actor):
         """        
         self._points += points
         self.set_text(f"Score: {self._points}")
-        # self.set_text(f"Player {cycle} {self._points}") #this is trying to change the score based on which player it is
-
+        
         #call score twice and change 'Score: ' to 'Player 1 ' and 'Player 2 '

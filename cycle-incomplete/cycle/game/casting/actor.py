@@ -22,7 +22,7 @@ class Actor:
         self._text = ""
         self._font_size = 15
         self._color = Color(255, 255, 255)
-        self._position = Point(0, 0)
+        self._position = Point(0, 0) #change possition of 2nd score*******************
         self._velocity = Point(0, 0)
 
     def get_color(self):

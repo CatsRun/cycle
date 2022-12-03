@@ -1,4 +1,6 @@
 from game.scripting.action import Action
+from game.casting.cast import Cast
+from game.casting.cycle import Cycle 
 
 
 class DrawActorsAction(Action):
@@ -18,6 +20,15 @@ class DrawActorsAction(Action):
             video_service (VideoService): An instance of VideoService.
         """
         self._video_service = video_service
+        cast = Cast()
+
+        #         #cycle 1
+        # cycle = cast.get_first_actor("cycle1")       
+        # segments = cycle.get_segments()
+        # # cycle 2
+        # cycle2 = cast.get_first_actor("cycle2")
+        # segments2 = cycle2.get_segments()
+        
 
     def execute(self, cast, script):
         """Executes the draw actors action.
@@ -26,21 +37,29 @@ class DrawActorsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
-        score = cast.get_first_actor("scores")
+        score = cast.get_first_actor("scores1")
         food = cast.get_first_actor("foods")
         cycle = cast.get_first_actor("cycles")
         segments = cycle.get_segments()
-        messages = cast.get_actors("messages")
+        messages = cast.get_actors("messages1")
 
-        score = cast.get_second_actor("scores")
-        food = cast.get_second_actor("foods")
-        cycle = cast.get_second_actor("cycles")
-        segments = cycle.get_segments()
-        messages = cast.get_actors("messages")
+        score2 = cast.get_first_actor("scores2")
+        food2 = cast.get_first_actor("foods2")
+        # cycle2 = cast.get_first_actor("cycles2")
+        # segments2 = cycle2.get_segments()
+        messages2 = cast.get_actors("messages2")
 
         self._video_service.clear_buffer()
-        self._video_service.draw_actor(food) #start this again. look at main to see what to uncomment
+        # self._video_service.draw_actor(food) #why does this not interact with collisions?
         self._video_service.draw_actors(segments)
         self._video_service.draw_actor(score)
         self._video_service.draw_actors(messages, True)
+        # self._video_service.flush_buffer()
+
+        
+        # self._video_service.clear_buffer()
+        self._video_service.draw_actor(food2) #
+        # self._video_service.draw_actors(segments2)
+        self._video_service.draw_actor(score2) #make this work
+        self._video_service.draw_actors(messages2, True)
         self._video_service.flush_buffer()
