@@ -19,9 +19,6 @@ class Cycle(Actor):
         self._cycle_color = color
         self._segments = []
         self._prepare_body()
-        # self.cycle1 = cycle1
-        # player1 = self
-        # player2 = self
 
     def get_segments(self):
         return self._segments
@@ -51,21 +48,22 @@ class Cycle(Actor):
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text("#")
-            # segment.set_color(constants.GREEN) #this color needs to change depentand upon each player
             segment.set_color(self._cycle_color)
             self._segments.append(segment)
 
     def turn_head(self, velocity):
         self._segments[0].set_velocity(velocity)
     
-    # def _prepare_body(self, change_start_point):
-    def _prepare_body(self):
-        # a = change_start_point
-        x = int(constants.MAX_X / 2) #start location of snake
-        y = int(constants.MAX_Y / 2)
-        # x = int(constants.MAX_X / 2 + a)
-        # # x = self.position 
-        # y = int(constants.MAX_Y / 2 + a)
+    def _prepare_body(self): #start location of snake        
+        x = 0.0 
+        y = 0.0
+      
+        if (self._cycle_color == constants.RED): #set the start points here
+            x = int(constants.MAX_X / 5)
+            y = int(constants.MAX_Y / 5)
+        else:
+            x = int(constants.MAX_X / 2)
+            y = int(constants.MAX_Y / 2)
 
 
         for i in range(constants.CYCLE_LENGTH):

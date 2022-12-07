@@ -20,12 +20,14 @@ def main():
     
     # create the cast
     cast = Cast()
-    cast.add_actor("foods", Food())
+    cast.add_actor("foods1", Food())
     cast.add_actor("foods2", Food())
-    cast.add_actor('cycles', Cycle(constants.RED)) #this replaces 'snake'
-    cast.add_actor('cycles', Cycle(constants.GREEN)) #this is how snake 1 and 2 are differentiated. 
-    # cast.add_actor("scores1", Score())
-    # cast.add_actor("scores2", Score()) #change start point 
+    cast.add_actor('cycles1', Cycle(constants.RED)) #this replaces 'snake'
+    cast.add_actor('cycles2', Cycle(constants.GREEN)) #this is how snake 1 and 2 are differentiated. 
+    cast.add_actor("scores1", Score())
+    cast.add_actor("scores2", Score()) 
+    cast.add_actor("segments1", Score())
+    cast.add_actor("segments2", Score())
     
 
 
@@ -41,8 +43,7 @@ def main():
     
     director = Director(video_service)
     director.start_game(cast, script)
-    # director.start_game(cast2, script) #having 2 of these makes the game one and then the other
-
+    
 
 if __name__ == "__main__":
     main()

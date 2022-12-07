@@ -1,5 +1,5 @@
 # Snake
-Cycle is a basic game where two players each control a snake. Each player tries to ollect food without hitting the other player. 
+Cycle is a basic game where two players each control a snake. Each player tries to collect food to grow their tail. The game ends when one cycle collides with the other cycle.  
 
 ## Getting Started
 ---
